@@ -46,3 +46,16 @@ df['satisfaccion_trabajo'] = df['satisfaccion_trabajo'].fillna('Alta')
 df['implicacion'] = df['implicacion'].fillna('Alta')
 
 df.head(10)
+
+    ##----- EDA Variables numéricas -----##
+def estadisticos_cont(num):
+    #Calculamos describe
+    estadisticos = num.describe().T
+    #Añadimos la mediana
+    estadisticos['median'] = num.median()
+    #Reordenamos para que la mediana esté al lado de la media
+    estadisticos = estadisticos.iloc[:,[0,1,8,2,3,4,5,6,7]]
+    #Lo devolvemos
+    return(estadisticos)
+
+print(estadisticos_cont(df.select_dtypes('number')))
