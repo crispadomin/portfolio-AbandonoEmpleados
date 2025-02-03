@@ -32,3 +32,17 @@ def graficos_eda_categoricos(cat):
         ax[cada].tick_params(labelsize = 12)
 
 graficos_eda_categoricos(df.select_dtypes('O'))
+
+'''     Conclusiones:
+        * mayor_edad solo tiene un valor --> eliminarla
+        * Sobre las imputaciones pendientes de variables categóricas:
+            * educacion: imputar por 'Universitaria'
+            * satisfaccion_trabajo: imputar por 'Alta'
+            * implicacion: imputar por 'Alta'   '''
+
+df.drop(columns = 'mayor_edad', inplace = True)
+df['educacion'] = df['educacion'].fillna('Universitaria')
+df['satisfaccion_trabajo'] = df['satisfaccion_trabajo'].fillna('Alta')
+df['implicacion'] = df['implicacion'].fillna('Alta')
+
+df.head(10)
