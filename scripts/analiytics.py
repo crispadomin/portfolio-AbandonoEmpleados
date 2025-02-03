@@ -59,3 +59,13 @@ def estadisticos_cont(num):
     return(estadisticos)
 
 print(estadisticos_cont(df.select_dtypes('number')))
+
+'''     Conclusiones:
+        * Empleados solo tiene un valor --> Eliminarla
+        * Sexo tiene 4 valores --> Eliminarla
+        * Horas quincena solo tiene una valor --> Eliminarla
+        * De los nulos pendientes de imputación que sean numéricas
+        solo está el sexo, pero como la vamos a eliminar ya no hay que imputar nada'''
+
+df.drop(columns = ['empleados','sexo','horas_quincena'], inplace = True)
+df.info()
