@@ -73,3 +73,31 @@ print('Coste falta motivación: ',df.loc[(df.abandono == 1) & (df.implicacion ==
 print(f"Reducir un 10% la fuga de empleados nos ahorraría {int(coste_total * 0.1)}$ cada año.")
 print(f"Reducir un 20% la fuga de empleados nos ahorraría {int(coste_total * 0.2)}$ cada año.")
 print(f"Reducir un 30% la fuga de empleados nos ahorraría {int(coste_total * 0.3)}$ cada año.")
+
+### Estrategias asociadas a los insights de abandono:
+'''Habíamos visto que los representantes de ventas son el puesto que más se van.
+¿Tendría sentido hacer un plan específico para ellos? ¿Cual sería el coste ahorrado si disminuimos la fuga un 30%?
+Primero vamos a calcular el % de representantes de ventas que se han ido el año pasado'''
+
+total_repre_pasado = len(df.loc[df.puesto == 'Sales Representative'])
+abandonos_repre_pasado = len(df.loc[(df.puesto == 'Sales Representative') & (df.abandono == 1)])
+porc_pasado = abandonos_repre_pasado / total_repre_pasado
+
+porc_pasado
+
+### Ahora vamos a estimar cuántos se nos irán este año
+total_repre_actual = len(df.loc[(df.puesto == 'Sales Representative') & (df.abandono == 0)])
+se_iran = int(total_repre_actual * porc_pasado)
+
+se_iran
+
+### Sobre ellos, cuantos podemos retener (hipótesis 30%) y cuanto dinero puede suponer
+retenemos = int(se_iran * 0.3)
+ahorramos = df.loc[(df.puesto == 'Sales Representative') & (df.abandono == 0),'impacto_abandono'].sum() * porc_pasado * 0.3
+
+print(f'Podemos retener {retenemos} representantes de ventas y ello supondría ahorrar {ahorramos}$.')
+
+'''Este dato también es muy interesante porque nos permite determinar el presupuesto para acciones
+de retención por departamento o perfil.
+Ya que sabemos que podemos gastarnos hasta 37.000$ sólo en acciones específicas para retener
+a representantes de ventas y se estarían pagando sólas con la pérdida evitada'''
