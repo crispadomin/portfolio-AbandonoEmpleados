@@ -1,0 +1,8 @@
+# Lista de dependencias del proyecto
+
+flask==2.1.1
+numpy==1.23.1
+pandas==1.4.2
+requests==2.26.0
+matplotlib==3.5.1
+scikit-learn==1.0.2
