@@ -1,6 +1,7 @@
 # 📊 Portfolio de Data Science - DS4B  
 
-Este repositorio contiene notebooks de Jupyter desarrollados durante el curso **"Tu primera semana como Data Scientist"** en **DS4B (Data Science for Business)**. Aquí encontrarás ejemplos prácticos de análisis de datos y Business Intelligence aplicados al mundo real.  
+Este repositorio contiene notebooks de Jupyter desarrollados durante el curso **"Tu primera semana como Data Scientist"** en **[DS4B (Data Science for Business)](https://datascience4business.com/)**. Aquí encontrarás ejemplos prácticos de análisis de datos y Business Intelligence aplicados al análisis de la tasa de abandono de empleados en una empresa.
+
 
 ---
 
