@@ -10,7 +10,8 @@ Este repositorio contiene notebooks de Jupyter desarrollados durante el curso **
 - 📁 **notebooks/** → Contiene los Jupyter Notebooks con ejercicios y análisis realizados.  
 - 📁 **data/** → Carpeta para datasets utilizados en los análisis.  
 - 📁 **images/** → Carpeta que contiene imágenes generadas en el análisis.  
-- 📁 **scripts/** → Carpeta que contiene códigos reutilizables en Python.  
+- 📁 **scripts/** → Carpeta que contiene códigos reutilizables en Python.
+- 📁 **media/** → Carpeta que contiene imágenes relacionadas con el repositorio.  
 - 📄 **README.md** → Explicación del contenido y objetivos del repositorio.  
 - 📄 **requirements.txt** → Lista de librerías necesarias para ejecutar los notebooks.  
 
