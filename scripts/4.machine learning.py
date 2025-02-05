@@ -29,3 +29,30 @@ print(df_ml)
 
 
 ##----- Diseño de la modelización -----##
+#Separación de variables predictoras y target
+x = df_ml.drop(columns='abandono')  #Predictoras
+y = df_ml['abandono']               #Target
+
+#Separación dataframes train y test
+from sklearn.model_selection import train_test_split
+
+train_x, test_x, train_y, test_y = train_test_split(x, y, test_size = 0.3)
+
+##----- Entrenamiento del modelo con train -----##
+from sklearn.tree import DecisionTreeClassifier
+
+#Instanciar
+ac = DecisionTreeClassifier(max_depth=4)
+#Entrenar
+ac.fit(train_x,train_y)
+
+##----- Predicción y validación sobre test -----##
+# Predicción
+pred = ac.predict_proba(test_x)[:, 1]
+pred[:20]
+# Evaluación
+from sklearn.metrics import roc_auc_score
+roc_auc_score(test_y,pred)
+
+###----- INTERPRETACIÓN -----###
+
