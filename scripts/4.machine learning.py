@@ -56,3 +56,38 @@ roc_auc_score(test_y,pred)
 
 ###----- INTERPRETACIÓN -----###
 
+##--- Diagrama de árbol ---##
+from sklearn.tree import plot_tree
+
+plt.figure(figsize = (50,50))
+
+plot_tree(ac,
+          feature_names= test_x.columns,
+          impurity = False,
+          node_ids = True,
+          proportion = True,
+          rounded = True,
+          precision = 2);
+
+##--- Importancia de las variables ---##
+pd.Series(ac.feature_importances_,index = test_x.columns).sort_values(ascending = False).plot(kind = 'bar', figsize = (30,20));
+
+
+###----- EXPLOTACIÓN -----###
+
+#Incoporación del scoring al dataframe principal
+df['scoring_abandono'] = ac.predict_proba(df_ml.drop(columns = 'abandono'))[:, 1]
+df
+
+#Ejemplo de los 10 empleados con mayor probabilidad de dejar la empresa
+df.sort_values(by = 'scoring_abandono', ascending = False)[0:10]
+
+#Ejemplo: riesgo de dejar la empresa por puesto de trabajo
+df.boxplot(column='scoring_abandono', by='puesto', figsize = (20,12));
+df
+
+#Guardar el resultado
+from google.colab import files
+
+df.to_excel('abandono_con_scoring.xlsx') 
+files.download('abandono_con_scoring.xlsx')
